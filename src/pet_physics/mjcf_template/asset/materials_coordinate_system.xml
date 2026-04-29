@@ -1,0 +1,5 @@
+<asset>
+    <material name="arrow.x" rgba="1 0 0 1" />
+    <material name="arrow.y" rgba="0 1 0 1" />
+    <material name="arrow.z" rgba="0 0 1 1" />
+</asset>
