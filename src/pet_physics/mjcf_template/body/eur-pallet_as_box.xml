@@ -1,0 +1,7 @@
+<worldbody>
+
+    <body name="pallet" pos="0.6 0.4 -0.072">
+        <geom name="_pallet.box" type="box" size="0.6 0.4 0.072" mass="25" rgba="0.871 0.722 0.529 1"
+            solimp=".99 .99 .01" solref=".001 1" />
+    </body>
+</worldbody>
