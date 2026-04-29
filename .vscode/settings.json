@@ -23,6 +23,10 @@
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
   "xml.format.maxLineWidth": 120,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "yaml.format.printWidth": 120,
   "python.testing.pytestArgs": [
     "tests",
   ],
