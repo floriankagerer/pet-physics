@@ -1,0 +1,73 @@
+<mujoco>
+    <worldbody>
+        <body name="pallet" pos="0.6 0.4 -0.072">
+            <geom name="_pallet.top.component.wide.1" type="box" size="0.6 0.075 0.015" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 -0.325 0.062" />
+            <geom name="_pallet.top.component.wide.2" type="box" size="0.6 0.075 0.015" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0 0.062" />
+            <geom name="_pallet.top.component.wide.3" type="box" size="0.6 0.075 0.015" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0.325 0.062" />
+
+            <geom name="_pallet.top.component.narrow.1" type="box" size="0.6 0.06 0.015" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0.1625 0.062" />
+            <geom name="_pallet.top.component.narrow.2" type="box" size="0.6 0.06 0.015" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 -0.1625 0.062" />
+
+            <geom name="_pallet.middle.fillet.1" type="box" size="0.075 0.4 0.007" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0 0.044" />
+            <geom name="_pallet.middle.fillet.2" type="box" size="0.075 0.4 0.007" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="-0.525 0 0.044" />
+            <geom name="_pallet.middle.fillet.3" type="box" size="0.075 0.4 0.007" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0.525 0 0.044" />
+
+            <!-- front row-->
+            <geom name="_pallet.middle.cuboid.1" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="-0.532 -0.342 -0.0075" />
+            <geom name="_pallet.middle.cuboid.2" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 -0.342 -0.0075" />
+            <geom name="_pallet.middle.cuboid.3" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0.532 -0.342 -0.0075" />
+            <!-- middle row-->
+            <geom name="_pallet.middle.cuboid.4" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="-0.532 0 -0.0075" />
+            <geom name="_pallet.middle.cuboid.5" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0 -0.0075" />
+            <geom name="_pallet.middle.cuboid.6" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0.532 0 -0.0075" />
+            <!-- back row-->
+            <geom name="_pallet.middle.cuboid.7" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="-0.532 0.342 -0.0075" />
+            <geom name="_pallet.middle.cuboid.8" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0.342 -0.0075" />
+            <geom name="_pallet.middle.cuboid.9" type="box" size="0.068 0.058 0.0445" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0.532 0.342 -0.0075" />
+
+            <geom name="_pallet.bottom.bottom.1" type="box" size="0.6 0.058 0.01" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 -0.342 -0.062" />
+            <geom name="_pallet.bottom.bottom.2" type="box" size="0.6 0.058 0.01" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0 -0.062" />
+            <geom name="_pallet.bottom.bottom.3" type="box" size="0.6 0.058 0.01" mass="2"
+                rgba="0.871 0.722 0.529 1"
+                solimp=".99 .99 .01" solref=".001 1" pos="0 0.342 -0.062" />
+        </body>
+    </worldbody>
+</mujoco>
