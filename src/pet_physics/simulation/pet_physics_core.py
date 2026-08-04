@@ -78,7 +78,7 @@ class PETPhysicsCore:
         return self._total_simulation_time
 
     @property
-    def body_teleporter(self) -> None:
+    def body_teleporter(self) -> BodyTeleporter:
         """The teleporter that is responsible for applying the body teleports at the correct time."""
         return self._body_teleporter
 
