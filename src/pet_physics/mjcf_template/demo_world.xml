@@ -80,6 +80,11 @@
                 rgba="0.871 0.722 0.529 1"
                 solimp=".99 .99 .01" solref=".001 1" pos="0 0.342 -0.062" />
         </body>
+        <body name="uneveness" pos="0.55 0.4 0.02">
+            <geom name="_uneveness.geom" type="box" size="0.05 0.05 0.02" mass="0.1"
+                rgba="0.1 0.9 0.1 1"
+                solimp=".99 .99 .01" solref=".001 1" />
+        </body>
         <body name="box" pos="2.0 2.0 -0.094">
             <freejoint />
             <geom name="_box.geom" type="box" size="0.05 0.05 0.05" mass="1"
