@@ -6,11 +6,13 @@ if __name__ == "__main__":
     from pet_physics.data_model.evaluation.stability_check import StabilityCheck
     from pet_physics.data_model.evaluation.stability_check_configuration import StabilityCheckConfiguration
     from pet_physics.data_model.teleport import Teleport
+    from pet_physics.plotting.chart_renderer import ChartRenderer
     from pet_physics.simulation import load_mujoco_model
     from pet_physics.simulation.callbacks.recorder_callback import RecorderCallback
     from pet_physics.simulation.callbacks.viewer_callback import ViewerCallback
     from pet_physics.simulation.pet_physics_core import PETPhysicsCore
     from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
+    from pet_physics.simulation.physical_quantities.quantity_names import QuantityName
     from pet_physics.simulation.physical_quantities.recorders.pose_recorder import PoseRecorder
 
     model_path = Path(__file__).parents[1] / "src" / "pet_physics" / "mjcf_template" / "demo_world.xml"
@@ -30,6 +32,10 @@ if __name__ == "__main__":
     teleport = Teleport(name="box", target_position=(0.6, 0.4, 0.5), initial_position=(2.0, 2.0, -0.094))
 
     collection_body_quantities = CollectionBodyQuantities()
+    pose_recorder_callback = RecorderCallback(
+        recorder_class=PoseRecorder,
+        collection_body_quantities=collection_body_quantities,
+    )
 
     pet_physics_core = PETPhysicsCore(
         model=mj_model,
@@ -39,11 +45,14 @@ if __name__ == "__main__":
         teleport_interval=3,
         callbacks=[
             ViewerCallback(),
-            RecorderCallback(
-                recorder_class=PoseRecorder,
-                collection_body_quantities=collection_body_quantities,
-            ),
+            pose_recorder_callback,
         ],
     )
     pet_physics_core.init_for_run(1 / 30)
     pet_physics_core.run()
+
+    chart_renderer = ChartRenderer(simulation_time=pose_recorder_callback.simulation_time)
+    fig = chart_renderer.line_chart_body_distance_to_origin_and_tiltedness_wrt_z_axis(
+        body_name="box", pose_history=collection_body_quantities.get_quantity_history(QuantityName.POSE)
+    )
+    fig.show()
