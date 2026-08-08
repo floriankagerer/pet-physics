@@ -6,6 +6,7 @@ if __name__ == "__main__":
     from pet_physics.data_model.evaluation.stability_check import StabilityCheck
     from pet_physics.data_model.evaluation.stability_check_configuration import StabilityCheckConfiguration
     from pet_physics.data_model.teleport import Teleport
+    from pet_physics.evaluation.pose.evaluator_pose_delta import EvaluatorPoseDelta
     from pet_physics.plotting.chart_renderer import ChartRenderer
     from pet_physics.simulation import load_mujoco_model
     from pet_physics.simulation.callbacks.recorder_callback import RecorderCallback
@@ -51,6 +52,12 @@ if __name__ == "__main__":
     pet_physics_core.init_for_run(1 / 30)
     pet_physics_core.run()
 
+    # Evaluate the poses
+    evaluator_pose_delta = EvaluatorPoseDelta(body_teleports=[teleport])
+    result_evaluator_pose_delta = evaluator_pose_delta.evaluate(collection_body_quantities)
+    print(result_evaluator_pose_delta.to_dict())
+
+    # Render the line chart for the distance to origin and tiltedness of the box
     chart_renderer = ChartRenderer(simulation_time=pose_recorder_callback.simulation_time)
     fig = chart_renderer.line_chart_body_distance_to_origin_and_tiltedness_wrt_z_axis(
         body_name="box", pose_history=collection_body_quantities.get_quantity_history(QuantityName.POSE)
