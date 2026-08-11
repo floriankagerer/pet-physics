@@ -1,5 +1,5 @@
 <worldbody>
-    <body name="pallet" pos="0.6 0.4 -0.072">
+    <body name="_pallet" pos="0.6 0.4 -0.072">
         <freejoint />
         <geom name="_pallet.top.component.wide.1" type="box" size="0.6 0.075 0.015" mass="2"
             rgba="0.871 0.722 0.529 1"
