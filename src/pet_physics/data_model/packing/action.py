@@ -3,10 +3,10 @@
 from dataclasses import dataclass, fields
 from typing import Self
 
-from pet_physics.data_model.base_data_model import BaseDataModel
-from pet_physics.data_model.item import Item
-from pet_physics.data_model.orientation import Orientation
-from pet_physics.data_model.position_3d import Position3D
+from pet_physics.data_model.packing.base_data_model import BaseDataModel
+from pet_physics.data_model.packing.item import Item
+from pet_physics.data_model.packing.orientation import Orientation
+from pet_physics.data_model.packing.position_3d import Position3D
 
 
 @dataclass

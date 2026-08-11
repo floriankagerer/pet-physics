@@ -1,6 +1,6 @@
 """Tests the module `item`."""
 
-from pet_physics.data_model.item import Item
+from pet_physics.data_model.packing.item import Item
 
 
 def test_item_serialization() -> None:

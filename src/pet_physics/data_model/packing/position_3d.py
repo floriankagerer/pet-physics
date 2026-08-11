@@ -5,8 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, fields
 from typing import Optional
 
-from pet_physics.data_model.base_data_model import BaseDataModel
-
+from pet_physics.data_model.packing.base_data_model import BaseDataModel
 
 SERIALIZE_NONE = False
 """Indicates whether `None` values are serialized."""

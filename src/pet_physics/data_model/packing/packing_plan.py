@@ -3,8 +3,8 @@
 from dataclasses import dataclass, fields
 from typing import Self
 
-from pet_physics.data_model.action import Action
-from pet_physics.data_model.base_data_model import BaseDataModel
+from pet_physics.data_model.packing.action import Action
+from pet_physics.data_model.packing.base_data_model import BaseDataModel
 
 
 @dataclass

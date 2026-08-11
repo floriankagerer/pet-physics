@@ -1,10 +1,10 @@
 """Tests the `packing_plan` module."""
 
-from pet_physics.data_model.action import Action
-from pet_physics.data_model.item import Item
-from pet_physics.data_model.orientation import Orientation
-from pet_physics.data_model.packing_plan import PackingPlan
-from pet_physics.data_model.position_3d import Position3D
+from pet_physics.data_model.packing.action import Action
+from pet_physics.data_model.packing.item import Item
+from pet_physics.data_model.packing.orientation import Orientation
+from pet_physics.data_model.packing.packing_plan import PackingPlan
+from pet_physics.data_model.packing.position_3d import Position3D
 
 
 def test_packing_plan_serialization() -> None:

@@ -2,8 +2,8 @@
 
 import pytest
 
-from pet_physics.data_model.item import Item
-from pet_physics.data_model.orientation import Orientation
+from pet_physics.data_model.packing.item import Item
+from pet_physics.data_model.packing.orientation import Orientation
 from pet_physics.data_model.type_alias import Size3d
 
 
