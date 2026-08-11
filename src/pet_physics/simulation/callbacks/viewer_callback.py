@@ -9,11 +9,11 @@ import numpy as np
 import structlog
 from mujoco.glfw import glfw
 
+from pet_physics.data_model.simulation.camera_view import CameraView
 from pet_physics.simulation.callbacks.base_callback import BaseCallback
 from pet_physics.simulation.callbacks.viewer.glfw_callbacks import GLFWCallbacks
 from pet_physics.simulation.callbacks.viewer.overlay_updater import OverlayUpdater
 from pet_physics.simulation.callbacks.viewer.visualization_settings import visualize_contacts_and_forces
-from pet_physics.simulation.data_model.camera_view import CameraView
 from pet_physics.simulation.picklable_wrappers.glfw_window import GLFWWindow
 from pet_physics.simulation.picklable_wrappers.mjv_camera import MjvCamera
 from pet_physics.simulation.picklable_wrappers.mjv_option import MjvOption

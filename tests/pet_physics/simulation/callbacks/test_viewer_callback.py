@@ -7,9 +7,9 @@ import numpy as np
 import pytest
 from mujoco.glfw import glfw
 
+from pet_physics.data_model.simulation.camera_view import CameraView
 from pet_physics.simulation.callbacks import viewer_callback as viewer_callback_module
 from pet_physics.simulation.callbacks.viewer_callback import ViewerCallback
-from pet_physics.simulation.data_model.camera_view import CameraView
 from pet_physics.simulation.picklable_wrappers.mjv_camera import MjvCamera
 from pet_physics.simulation.picklable_wrappers.mjv_option import MjvOption
 
