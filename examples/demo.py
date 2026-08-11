@@ -6,6 +6,7 @@ if __name__ == "__main__":
     from pet_physics.data_model.evaluation.stability_check import StabilityCheck
     from pet_physics.data_model.evaluation.stability_check_configuration import StabilityCheckConfiguration
     from pet_physics.data_model.teleport import Teleport
+    from pet_physics.evaluation.acceleration.evaluator_max_acceleration import EvaluatorMaxAcceleration
     from pet_physics.evaluation.pose.evaluator_pose_delta import EvaluatorPoseDelta
     from pet_physics.plotting.chart_renderer import ChartRenderer
     from pet_physics.simulation import load_mujoco_model
@@ -14,6 +15,7 @@ if __name__ == "__main__":
     from pet_physics.simulation.pet_physics_core import PETPhysicsCore
     from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
     from pet_physics.simulation.physical_quantities.quantity_names import QuantityName
+    from pet_physics.simulation.physical_quantities.recorders.acceleration_recorder import AccelerationRecorder
     from pet_physics.simulation.physical_quantities.recorders.pose_recorder import PoseRecorder
 
     model_path = Path(__file__).parents[1] / "src" / "pet_physics" / "mjcf_template" / "demo_world.xml"
@@ -37,6 +39,9 @@ if __name__ == "__main__":
         recorder_class=PoseRecorder,
         collection_body_quantities=collection_body_quantities,
     )
+    acceleration_recorder_callback = RecorderCallback(
+        recorder_class=AccelerationRecorder, collection_body_quantities=collection_body_quantities
+    )
 
     pet_physics_core = PETPhysicsCore(
         model=mj_model,
@@ -47,6 +52,7 @@ if __name__ == "__main__":
         callbacks=[
             ViewerCallback(),
             pose_recorder_callback,
+            acceleration_recorder_callback,
         ],
     )
     pet_physics_core.init_for_run(1 / 30)
@@ -56,6 +62,13 @@ if __name__ == "__main__":
     evaluator_pose_delta = EvaluatorPoseDelta(body_teleports=[teleport])
     result_evaluator_pose_delta = evaluator_pose_delta.evaluate(collection_body_quantities)
     print(result_evaluator_pose_delta.to_dict())
+
+    # Evaluate the accelerations
+    evaluator_max_acceleration = EvaluatorMaxAcceleration()
+    result_evaluator_max_acceleration = evaluator_max_acceleration.evaluate(
+        collection_body_quantities=collection_body_quantities
+    )
+    print(result_evaluator_max_acceleration.to_dict())
 
     # Render the line chart for the distance to origin and tiltedness of the box
     chart_renderer = ChartRenderer(simulation_time=pose_recorder_callback.simulation_time)
