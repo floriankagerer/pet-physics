@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from pet_physics.data_model.physical_quantities.simulation_time import SimulationTime
 from pet_physics.simulation.callbacks.base_callback import BaseCallback
 from pet_physics.simulation.mujoco_lookup_helpers import get_body_names_in_model
 from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
-from pet_physics.simulation.physical_quantities.data_model.simulation_time import SimulationTime
 from pet_physics.simulation.physical_quantities.recorders.base_recorder import BaseRecorder
 
 if TYPE_CHECKING:

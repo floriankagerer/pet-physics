@@ -3,7 +3,7 @@ MuJoCo simulation."""
 
 import numpy as np
 
-from pet_physics.simulation.physical_quantities.data_model.acceleration import Acceleration
+from pet_physics.data_model.physical_quantities.acceleration import Acceleration
 from pet_physics.simulation.physical_quantities.history.base_history import BaseHistory
 
 

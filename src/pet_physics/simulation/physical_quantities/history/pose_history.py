@@ -3,7 +3,7 @@ simulation."""
 
 import numpy as np
 
-from pet_physics.simulation.physical_quantities.data_model.pose import Pose
+from pet_physics.data_model.physical_quantities.pose import Pose
 from pet_physics.simulation.physical_quantities.history.base_history import BaseHistory
 
 

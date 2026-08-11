@@ -1,7 +1,7 @@
 """This module contains the `PenetrationHistory` class, which tracks the history of penetration of bodies during a
 MuJoCo simulation."""
 
-from pet_physics.simulation.physical_quantities.data_model.penetration import Penetration
+from pet_physics.data_model.physical_quantities.penetration import Penetration
 from pet_physics.simulation.physical_quantities.history.base_history import BaseHistory
 
 
