@@ -1,8 +1,8 @@
 """This module contains the `ForceHistory` class, which tracks the history of forces of bodies during a
 MuJoCo simulation."""
 
-from pet_physics.simulation.physical_quantities.data_model.body_forces import BodyForces
-from pet_physics.simulation.physical_quantities.data_model.contact_force import ContactForce
+from pet_physics.data_model.physical_quantities.body_forces import BodyForces
+from pet_physics.data_model.physical_quantities.contact_force import ContactForce
 from pet_physics.simulation.physical_quantities.history.base_history import BaseHistory
 
 

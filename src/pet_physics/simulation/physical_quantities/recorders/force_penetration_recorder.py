@@ -2,8 +2,8 @@
 
 import mujoco
 
+from pet_physics.data_model.physical_quantities.contact_force import ContactForce
 from pet_physics.simulation.mujoco_lookup_helpers import get_contacts_of_geometry, get_geom_names_of_body
-from pet_physics.simulation.physical_quantities.data_model.contact_force import ContactForce
 from pet_physics.simulation.physical_quantities.history.force_history import ForceHistory
 from pet_physics.simulation.physical_quantities.history.penetration_history import PenetrationHistory
 from pet_physics.simulation.physical_quantities.quantity_names import QuantityName

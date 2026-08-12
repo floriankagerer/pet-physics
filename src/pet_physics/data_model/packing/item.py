@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass, fields
 
-from pet_physics.data_model.base_data_model import BaseDataModel
+from pet_physics.data_model.packing.base_data_model import BaseDataModel
 
 
 @dataclass

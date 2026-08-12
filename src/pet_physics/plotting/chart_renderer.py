@@ -5,11 +5,11 @@ This module contains a class that is used to create charts of quantities that we
 
 import plotly.graph_objects as go
 
+from pet_physics.data_model.physical_quantities.acceleration import Acceleration
+from pet_physics.data_model.physical_quantities.body_forces import BodyForces
+from pet_physics.data_model.physical_quantities.pose import Pose
+from pet_physics.data_model.physical_quantities.simulation_time import SimulationTime
 from pet_physics.plotting.plotting_utils import AxisInfo, create_interactive_line_chart
-from pet_physics.simulation.physical_quantities.data_model.acceleration import Acceleration
-from pet_physics.simulation.physical_quantities.data_model.body_forces import BodyForces
-from pet_physics.simulation.physical_quantities.data_model.pose import Pose
-from pet_physics.simulation.physical_quantities.data_model.simulation_time import SimulationTime
 from pet_physics.simulation.physical_quantities.history.acceleration_history import AccelerationHistory
 from pet_physics.simulation.physical_quantities.history.force_history import ForceHistory
 from pet_physics.simulation.physical_quantities.history.pose_history import PoseHistory

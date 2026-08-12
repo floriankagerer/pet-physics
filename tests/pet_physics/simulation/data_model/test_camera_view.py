@@ -5,7 +5,7 @@ import dataclasses
 import numpy as np
 import pytest
 
-from pet_physics.simulation.data_model.camera_view import CameraView
+from pet_physics.data_model.simulation.camera_view import CameraView
 
 
 def test_camera_view_stores_all_fields() -> None:

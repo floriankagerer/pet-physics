@@ -7,11 +7,11 @@ to determine whether a box fell off the carrier, and if so, at which point in ti
 import structlog
 
 from pet_physics.data_model.dropped_body import DroppedBody
+from pet_physics.data_model.physical_quantities.pose import Pose
 from pet_physics.simulation.drop_detection.base_drop_detector import BaseDropDetector
 from pet_physics.simulation.drop_detection.drop_detection_core import (
     is_body_bottom_side_below_z_coordinate_that_defines_floor_contact,
 )
-from pet_physics.simulation.physical_quantities.data_model.pose import Pose
 from pet_physics.simulation.physical_quantities.history.pose_history import PoseHistory
 from pet_physics.type_alias_definition import Size3d
 from pet_physics.utils.quaternion_utils import oriented_size

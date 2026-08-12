@@ -4,9 +4,9 @@ from pet_physics.data_model.evaluation.acceleration.body_max_acceleration import
 from pet_physics.data_model.evaluation.acceleration.result_evaluator_max_acceleration import (
     ResultEvaluatorMaxAcceleration,
 )
+from pet_physics.data_model.physical_quantities.acceleration import Acceleration
 from pet_physics.evaluation.base_evaluator import BaseEvaluator
 from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
-from pet_physics.simulation.physical_quantities.data_model.acceleration import Acceleration
 from pet_physics.simulation.physical_quantities.quantity_names import QuantityName
 
 NAME_EVALUATOR_MAX_ACCELERATION = "max_acceleration"

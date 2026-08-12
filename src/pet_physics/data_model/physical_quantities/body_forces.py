@@ -1,6 +1,6 @@
 """This module is a convenience class for gathering forces that belong to a body."""
 
-from pet_physics.simulation.physical_quantities.data_model.contact_force import ContactForce
+from pet_physics.data_model.physical_quantities.contact_force import ContactForce
 
 
 class BodyForces:

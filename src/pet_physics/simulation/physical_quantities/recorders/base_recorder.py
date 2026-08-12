@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 import mujoco
 
-from pet_physics.simulation.physical_quantities.data_model.simulation_time import SimulationTime
+from pet_physics.data_model.physical_quantities.simulation_time import SimulationTime
 from pet_physics.simulation.physical_quantities.history.base_history import BaseHistory
 from pet_physics.wrapper.data_extractor import DataExtractor
 

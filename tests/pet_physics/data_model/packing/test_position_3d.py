@@ -2,7 +2,7 @@
 
 import pytest
 
-from pet_physics.data_model.position_3d import Position3D
+from pet_physics.data_model.packing.position_3d import Position3D
 
 
 @pytest.mark.parametrize(
@@ -35,10 +35,10 @@ def test_position_3d_serialization(
 ) -> None:
     """Tests whether an object of the dataclass `Position3D` is correctly serialized."""
 
-    import pet_physics.data_model.position_3d
+    import pet_physics.data_model.packing.position_3d
 
     # Set the variable that defines whether `None` is serialized
-    pet_physics.data_model.position_3d.SERIALIZE_NONE = serialize_none
+    pet_physics.data_model.packing.position_3d.SERIALIZE_NONE = serialize_none
 
     assert actual_position.to_dict() == expected_serialized
 

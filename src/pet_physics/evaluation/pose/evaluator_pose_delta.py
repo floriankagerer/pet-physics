@@ -4,10 +4,10 @@ import numpy as np
 
 from pet_physics.data_model.evaluation.pose.body_pose_delta import BodyPoseDelta
 from pet_physics.data_model.evaluation.pose.result_evaluator_pose_delta import ResultEvaluatorPoseDelta
+from pet_physics.data_model.physical_quantities.pose import Pose
 from pet_physics.data_model.teleport import Teleport
 from pet_physics.evaluation.base_evaluator import BaseEvaluator
 from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
-from pet_physics.simulation.physical_quantities.data_model.pose import Pose
 from pet_physics.simulation.physical_quantities.quantity_names import QuantityName
 
 NAME_EVALUATOR_POSE_DELTA = "pose_delta"
