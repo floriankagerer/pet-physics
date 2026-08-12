@@ -98,16 +98,23 @@ MJ_MODEL = """
 </mujoco>
 """
 
+_BODY_NAME_TO_SIZE_MAPPING = {
+    "box": (0.05, 0.05, 0.05),
+}
+
 if __name__ == "__main__":
     from pet_physics.data_model.evaluation.stability_check import StabilityCheck
     from pet_physics.data_model.evaluation.stability_check_configuration import StabilityCheckConfiguration
     from pet_physics.evaluation.pose.evaluator_box_drop import EvaluatorBoxDrop
     from pet_physics.simulation import load_mujoco_model_from_string
+    from pet_physics.simulation.callbacks.early_termination_callback import EarlyTerminationIfAnyBoxTouchesFloorCallback
     from pet_physics.simulation.callbacks.recorder_callback import RecorderCallback
     from pet_physics.simulation.callbacks.viewer_callback import ViewerCallback
     from pet_physics.simulation.pet_physics_core import PETPhysicsCore
     from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
     from pet_physics.simulation.physical_quantities.recorders.pose_recorder import PoseRecorder
+
+    _USE_EARLY_TERMINATION_CALLBACK = False
 
     mj_model = load_mujoco_model_from_string(MJ_MODEL)
 
@@ -127,25 +134,30 @@ if __name__ == "__main__":
         collection_body_quantities=collection_body_quantities,
     )
 
+    callbacks = [ViewerCallback(), pose_recorder_callback]
+    if _USE_EARLY_TERMINATION_CALLBACK:
+        callbacks.append(
+            EarlyTerminationIfAnyBoxTouchesFloorCallback(
+                body_name_to_size_mapping=_BODY_NAME_TO_SIZE_MAPPING,
+                call_every_nth_mj_step=50,
+                distance_below_top_side_of_carrier_to_consider_as_not_touching_floor=None,
+            )
+        )
+
     pet_physics_core = PETPhysicsCore(
         model=mj_model,
         stability_check=stability_check,
         body_teleports=[],
         total_simulation_time=stability_check.check_configuration.total_simulation_time_seconds,
         teleport_interval=3,
-        callbacks=[
-            ViewerCallback(),
-            pose_recorder_callback,
-        ],
+        callbacks=callbacks,
     )
     pet_physics_core.init_for_run(1 / 30)
     pet_physics_core.run()
 
     # Evaluate box drop
     evaluator_box_drop = EvaluatorBoxDrop(
-        body_name_to_size_mapping={
-            "box": (0.05, 0.05, 0.05),
-        }
+        body_name_to_size_mapping=_BODY_NAME_TO_SIZE_MAPPING,
     )
     result_evaluator_box_drop = evaluator_box_drop.evaluate(collection_body_quantities)
     # Should print that box dropped at timestamp 33.
