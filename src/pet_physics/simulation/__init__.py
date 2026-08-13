@@ -4,6 +4,8 @@ from pathlib import Path
 
 import mujoco
 
+from pet_physics.modeling import get_path_and_placeholder_for_replacement
+
 
 def _load_model(content: str) -> mujoco.MjModel:
     """Creates a MuJoCo model from the given content.
@@ -14,7 +16,11 @@ def _load_model(content: str) -> mujoco.MjModel:
     Returns:
         The model for the simulation.
     """
-    return mujoco.MjModel.from_xml_string(content)
+    # update the model content
+    path_placeholder, path_replacement = get_path_and_placeholder_for_replacement()
+    updated_model_content = content.replace(path_placeholder, path_replacement)
+
+    return mujoco.MjModel.from_xml_string(updated_model_content)
 
 
 def load_mujoco_model(model_file: Path) -> mujoco.MjModel:

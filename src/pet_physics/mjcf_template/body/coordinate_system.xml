@@ -1,0 +1,14 @@
+<worldbody>
+    <body name="_coordinate_system.x" pos="0 -0.05 0" axisangle="0 1 0 90">
+        <geom name="_x.shaft" type="cylinder" size="0.01 0.05" pos="0 0 0.05" material="arrow.x" />
+        <geom name="_x.tip" type="mesh" mesh="mesh.cone" pos="0 0 0.1" material="arrow.x" />
+    </body>
+    <body name="_coordinate_system.y" pos="-0.05 0 0" axisangle="1 0 0 -90">
+        <geom name="_y.shaft" type="cylinder" size="0.01 0.05" pos="0 0 0.05" material="arrow.y" />
+        <geom name="_y.tip" type="mesh" mesh="mesh.cone" pos="0 0 0.1" material="arrow.y" />
+    </body>
+    <body name="_coordinate_system.z" pos="-0.05 -0.05 0.01">
+        <geom name="_z.shaft" type="cylinder" size="0.01 0.05" pos="0 0 0.05" material="arrow.z" />
+        <geom name="_z.tip" type="mesh" mesh="mesh.cone" pos="0 0 0.1" material="arrow.z" />
+    </body>
+</worldbody>
