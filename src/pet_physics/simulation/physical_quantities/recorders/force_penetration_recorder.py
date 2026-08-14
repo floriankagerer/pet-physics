@@ -85,10 +85,23 @@ class ForcePenetrationRecorder(BaseRecorder):
             for c_idx, c in contacts_with_indices:
                 force_and_torque = DataExtractor.contact_force(model, data, c_idx)
 
-                contact_force = ContactForce(
-                    contact=MjContactWrapper(c, model),
-                    value=force_and_torque[0:3],
-                )
+                contact_wrapper = MjContactWrapper(c, model)
+                # mj_contactForce returns force direction from geom1 -> geom2. The force acting on the geometry that
+                # is listed as geom2 must be negated to represent the force that acts on that geometry.
+                # mujoco.mj_contactForce returns the force expressed in the contact frame. Convert it to
+                # world coordinates using the contact frame before interpreting the z-component as world-z.
+                force_vec = force_and_torque[0:3]
+                world_force = contact_wrapper.force_in_world(force_vec)
+
+                if contact_wrapper.name_geom1 == geom:
+                    value = world_force
+                elif contact_wrapper.name_geom2 == geom:
+                    value = -world_force
+                else:
+                    # fallback: use the world transformed vector
+                    value = world_force
+
+                contact_force = ContactForce(contact=contact_wrapper, value=value)
 
                 self._force_history.track_value_of_body_in_step(
                     body_name=body_name, step_index=step_index, value=contact_force
