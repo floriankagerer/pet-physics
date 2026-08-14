@@ -43,7 +43,8 @@ class ChartRenderer:
 
         simulation_time_values = self._simulation_time.values
 
-        body_contact_forces_bottom = [force.sum_contact_forces_z_bottom for force in body_forces]
+        # use total z-component of all contact forces so non-vertical contacts are included
+        body_contact_forces_bottom = [force.sum_contact_forces_z for force in body_forces]
         body_contact_forces_top = [force.sum_contact_forces_z_top for force in body_forces]
 
         x_axis = AxisInfo(name="simulation_time", values=simulation_time_values, label="Simulation time (seconds)")

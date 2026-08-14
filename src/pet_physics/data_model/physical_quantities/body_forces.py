@@ -77,6 +77,20 @@ class BodyForces:
         return sum_z_force
 
     @property
+    def sum_contact_forces_z(self) -> float:
+        """Returns the sum of the z-value of all contact forces that act on this body.
+
+        This includes contacts that are not strictly vertical. Useful to get the total
+        z-component of contact forces regardless of contact orientation.
+        """
+        sum_z_force = 0.0
+
+        for contact_force in self._contact_forces:
+            sum_z_force += contact_force.value_z
+
+        return sum_z_force
+
+    @property
     def sum_contact_forces_z_top(self) -> float:
         """Returns the sum of the z-value of all contact forces that act on top of the body."""
         sum_z_force = 0.0
