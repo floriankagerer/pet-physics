@@ -87,6 +87,36 @@ class MjContactWrapper:
         unit_normal_vector = normal_vector / np.linalg.norm(normal_vector)
         return unit_normal_vector
 
+    @property
+    def tangent1_vector(self) -> np.ndarray:
+        """The first tangent vector of the contact frame."""
+        t1 = self._raw.frame[3:6]
+        norm = np.linalg.norm(t1)
+        if norm == 0:
+            return t1
+        return t1 / norm
+
+    def force_in_world(self, force_in_contact_frame: np.ndarray) -> np.ndarray:
+        """Converts a force vector given in the contact frame to world coordinates.
+
+        MuJoCo returns contact forces in the contact frame where the first three
+        components correspond to axes described by `frame[0:3]` (normal) and
+        `frame[3:6]` (first tangent). The third tangent is the cross product of
+        the normal and the first tangent.
+
+        Args:
+            force_in_contact_frame: The force vector in the contact frame.
+
+        Returns:
+            The force vector in world coordinates.
+        """
+        n = self.unit_normal_vector
+        t1 = self.tangent1_vector
+        t2 = np.cross(n, t1)
+
+        f_c = np.asarray(force_in_contact_frame)
+        return f_c[0] * n + f_c[1] * t1 + f_c[2] * t2
+
     def represents_vertical_contact(self) -> bool:
         """Indicates whether this contact is oriented in the vertical direction."""
         vertical_vector = np.array([0, 0, 1])
