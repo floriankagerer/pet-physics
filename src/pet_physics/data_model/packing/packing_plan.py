@@ -51,3 +51,12 @@ class PackingPlan(BaseDataModel):
                 as_dict[key] = [action.to_dict() for action in self.actions]
 
         return as_dict
+
+    @property
+    def total_weight_kg(self) -> float:
+        """Calculates the total weight of all items in the packing plan.
+
+        Returns:
+            float: The total weight of all items in the packing plan, in kilograms.
+        """
+        return sum(action.item.weight_kg for action in self.actions)
