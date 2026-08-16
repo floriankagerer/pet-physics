@@ -2,7 +2,7 @@
 
 Provides helpers for resolving geometry and body identifiers by name or id,
 filtering contacts by geometry, and accessing joint position addresses in
-``data.qpos``.
+`data.qpos`.
 """
 
 from __future__ import annotations
@@ -47,7 +47,7 @@ def get_contacts_of_geometry(
     Args:
         model: The model of the simulation.
         contacts: All contacts that occurred in the simulation.
-        geom_name: The name of the geometry to filter by. If ``None``, all contacts are returned.
+        geom_name: The name of the geometry to filter by. If `None`, all contacts are returned.
 
     Returns:
         A list of tuples where the first element is the index of the contact in the original list and the second element
@@ -120,9 +120,9 @@ def get_geom_names_of_body(model: mujoco.MjModel, body_name: str) -> list[str]:
 
 
 def get_joint_start_address_of_body(model: mujoco.MjModel, body_name: str) -> int:
-    """Returns the start address in ``data.qpos`` for the given body.
+    """Returns the start address in `data.qpos` for the given body.
 
-    This address is used, e.g., to update the ``qpos`` of this body.
+    This address is used, e.g., to update the `qpos` of this body.
 
     Reference: https://mujoco.readthedocs.io/en/stable/APIreference/APItypes.html#mjmodel
     ```
@@ -135,7 +135,7 @@ def get_joint_start_address_of_body(model: mujoco.MjModel, body_name: str) -> in
         body_name: The name of the body as defined in the model.
 
     Returns:
-        The start address in ``data.qpos`` for the given body.
+        The start address in `data.qpos` for the given body.
 
     Example:
         ```
@@ -169,7 +169,7 @@ def get_body_contacts(model: mujoco.MjModel, data: mujoco.MjData) -> set[tuple[s
         data: The simulation data containing current contact information.
 
     Returns:
-        A set of 3-tuples ``(geom1_name, geom2_name, geom_on_top)`` for each contact, where ``geom_on_top`` is the
+        A set of 3-tuples `(geom1_name, geom2_name, geom_on_top)` for each contact, where `geom_on_top` is the
         geometry with the upward contact normal.
     """
     body_contacts = set()

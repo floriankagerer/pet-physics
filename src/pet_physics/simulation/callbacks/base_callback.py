@@ -45,7 +45,7 @@ class BaseCallback(ABC):
         return body_id
 
     def convert_simulation_time_to_mj_step_index(self, simulation_time: float) -> int:
-        """Converts a simulation time to the corresponding ``mujoco.mj_step`` call index.
+        """Converts a simulation time to the corresponding `mujoco.mj_step` call index.
 
         To calculate the index, the time step that is defined in the mujoco model (MjModel) is used.
 
@@ -58,7 +58,7 @@ class BaseCallback(ABC):
         return int(simulation_time / self.core.mj_model_timestep)
 
     def convert_simulation_times_to_mj_step_indices(self, simulation_times: list[float]) -> list[int]:
-        """Converts a list of simulation times to the corresponding ``mujoco.mj_step`` call indices.
+        """Converts a list of simulation times to the corresponding `mujoco.mj_step` call indices.
 
         Args:
             simulation_times: The simulation times to convert.
@@ -70,10 +70,10 @@ class BaseCallback(ABC):
         return mj_step_indices
 
     def call_on_every_nth_mj_step(self, n: int | None = None) -> list[int]:
-        """Returns a list of indices that represent after which calls of ``mujoco.mj_step`` this callback is called.
+        """Returns a list of indices that represent after which calls of `mujoco.mj_step` this callback is called.
 
-        If no ``n`` is given, the time step of the ``PETPhysicsCore`` is used, i.e., the callback is called every
-        ``core.run_timestep / core.mj_model_timestep``.
+        If no `n` is given, the time step of the `PETPhysicsCore` is used, i.e., the callback is called every
+        `core.run_timestep / core.mj_model_timestep`.
 
         Args:
             n: If given, the callback is called every n-th `mujoco.mj_step` call. If `None`, the time step of the

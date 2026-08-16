@@ -12,7 +12,7 @@ class AbstractClassVariableMeta(ABCMeta):
     """Metaclass that enforces required class variable declarations on evaluator subclasses."""
 
     def __new__(mcs, name, bases, namespace):
-        """Creates a new class, enforcing that concrete subclasses define ``cl_name``.
+        """Creates a new class, enforcing that concrete subclasses define `cl_name`.
 
         Args:
             name (str): The name of the class being created.
@@ -23,7 +23,7 @@ class AbstractClassVariableMeta(ABCMeta):
             type: The newly created class.
 
         Raises:
-            NotImplementedError: If a concrete subclass does not define ``cl_name``.
+            NotImplementedError: If a concrete subclass does not define `cl_name`.
         """
         cls = super().__new__(mcs, name, bases, namespace)
 
