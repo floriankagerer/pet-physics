@@ -24,7 +24,7 @@ class BaseMJCFObject(ABC):
         Args:
             tag (Optional[str]): The XML tag to use. If None, the tag is derived
                 from the name of the class that directly inherits from
-                ``BaseMJCFObject``.
+                `BaseMJCFObject`.
 
         Returns:
             ET.Element: The XML element representing this object.
@@ -63,7 +63,7 @@ class BaseMJCFObject(ABC):
     def get_assigned_attributes(
         self,
     ) -> Generator[tuple[str, float | int | str], None, None]:
-        """Yields all non-None, non-empty attributes, excluding ``_children``.
+        """Yields all non-None, non-empty attributes, excluding `_children`.
 
         Yields:
             tuple[str, float | int | str]: A tuple of (name, value) for each
@@ -88,10 +88,10 @@ class BaseMJCFObject(ABC):
 
     @property
     def serialization_key(self) -> str:
-        """The name of the class that directly inherits from ``BaseMJCFObject``.
+        """The name of the class that directly inherits from `BaseMJCFObject`.
 
-        For example, ``Geom(BaseMJCFObject)`` has key ``"Geom"`` and
-        ``CardboardGeom(Geom)`` also has key ``"Geom"``.
+        For example, `Geom(BaseMJCFObject)` has key `"Geom"` and
+        `CardboardGeom(Geom)` also has key `"Geom"`.
         """
         ancestors = self.__class__.__mro__
         direct_descendant_of_base_mjcf = ancestors[ancestors.index(BaseMJCFObject) - 1]
