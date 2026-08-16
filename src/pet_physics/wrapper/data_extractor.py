@@ -37,7 +37,10 @@ class DataExtractor:
         Returns:
             contacts: All contacts that were detected.
         """
-        return data.contact
+        # Only return the first `ncon` entries which are the active contacts.
+        # The full `data.contact` array can contain uninitialized slots beyond
+        # `data.ncon` that lead to spurious zero-valued contacts when iterated.
+        return list(data.contact[: data.ncon])
 
     @staticmethod
     def contact_force(model: mujoco.MjModel, data: mujoco.MjData, contact_index: int) -> np.ndarray:
