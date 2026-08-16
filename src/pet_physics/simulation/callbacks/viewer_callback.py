@@ -263,9 +263,7 @@ class ViewerCallback(BaseCallback):
             viewport=viewport,
             context=self._context,
             callback_related={"wiggle": self.wiggle_config},
-            simulation_status={},
-            # TODO(florian): add palletizing status to the overlay
-            # simulation_status={"all_items_palletized": self.core.body_teleporter.are_all_body_teleports_applied},
+            simulation_status={"all_items_palletized": self.core.body_teleporter.are_all_body_teleports_applied},
         )
 
     def __del__(self):
