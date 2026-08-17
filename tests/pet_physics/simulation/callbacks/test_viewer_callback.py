@@ -172,7 +172,7 @@ def test_update_refreshes_the_overlay_with_wiggle_and_palletizing_status(
         viewport=viewport,
         context=mujoco.MjrContext.return_value,
         callback_related={"wiggle": "sentinel-wiggle-config"},
-        simulation_status={},
+        simulation_status={"all_items_palletized": True},
     )
 
 
