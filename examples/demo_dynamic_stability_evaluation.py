@@ -13,7 +13,6 @@ from pet_physics.conversion.bed_bpp.configuration_factory_from_bed_bpp import (
 from pet_physics.data_model.evaluation.pose.threshold_pose_delta import ThresholdPoseDelta
 from pet_physics.data_model.evaluation.stability_check import StabilityCheck, StabilityCheckConfiguration
 from pet_physics.data_model.model_configuration import ModelConfiguration
-from pet_physics.data_model.modeling.collection_model_configuration import CollectionModelConfiguration
 from pet_physics.data_model.packing.collection_packing_plan import CollectionPackingPlan
 from pet_physics.data_model.serialization import to_dict
 from pet_physics.data_model.simulation.evaluation_config import EvaluationConfig
