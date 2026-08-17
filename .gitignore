@@ -1,5 +1,6 @@
 # Ignore specific files
 examples/*.xml
+examples/output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
