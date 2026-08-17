@@ -50,6 +50,8 @@ def get_model_configuration_and_mujoco_model_str(
         ValueError: If `packing_plan_index` is greater than or equal to the number of packing plans in the collection.
             Negative indices are considered invalid
     """
+    # TODO(flo): Make two functions for this => parametrize whether to load an existing model or not; parametrize
+    #   whether a specific model configuration is returned or the entire collection.
     collection_packing_plan = CollectionPackingPlan.from_file(packing_plan_path)
 
     if packing_plan_index < 0:
