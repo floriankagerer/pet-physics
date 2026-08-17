@@ -1,6 +1,6 @@
 """Contains a class that represents an item."""
 
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, field, fields
 
 from pet_physics.data_model.packing.base_data_model import BaseDataModel
 
@@ -25,11 +25,11 @@ class Item(BaseDataModel):
     article: str
     product_group: str
 
-    length_mm: int
-    width_mm: int
-    height_mm: int
+    length_mm: int = field(metadata={"alias": "length/mm"})
+    width_mm: int = field(metadata={"alias": "width/mm"})
+    height_mm: int = field(metadata={"alias": "height/mm"})
 
-    weight_kg: float
+    weight_kg: float = field(metadata={"alias": "weight/kg"})
 
     sequence: int
 
