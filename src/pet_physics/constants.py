@@ -7,6 +7,8 @@ DEFAULT_SIM_END = 1200
 """The default value of the total simulation time in seconds."""
 DEFAULT_TELEPORT_INTERVAL = 0.5
 """The default time between the teleports of two bodies in seconds."""
+GRAVITY = 9.81
+"""The gravity that is used in the simulation in m/s^2."""
 UNIT_NORMAL_Z_AXIS = (0, 0, 1)
 """The unit normal that represents the direction of the z-axis."""
 Z_COORDINATE_TOP_SIDE_OF_CARRIER = 0.0

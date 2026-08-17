@@ -1,23 +1,24 @@
-"""This script demonstrates how to convert a packing plan into a collection of model configurations."""
+"""A script that demonstrates the force application."""
 
 from pathlib import Path
 
 import structlog
 
+from pet_physics.constants import GRAVITY
 from pet_physics.conversion.bed_bpp.configuration_factory_from_bed_bpp import (
     create_collection_model_configurations_from_packing_plans,
 )
-from pet_physics.data_model.evaluation.stability_check import StabilityCheck
-from pet_physics.data_model.evaluation.stability_check_configuration import StabilityCheckConfiguration
+from pet_physics.data_model.evaluation.stability_check import StabilityCheck, StabilityCheckConfiguration
 from pet_physics.data_model.model_configuration import ModelConfiguration
 from pet_physics.data_model.packing.collection_packing_plan import CollectionPackingPlan
+from pet_physics.data_model.simulation.force_application_profile import ForceApplicationProfile
 from pet_physics.modeling.model_generation.model_generator import ModelGenerator
 from pet_physics.modeling.model_generation.model_generator_configuration import RigidNewton
+from pet_physics.simulation.callbacks.force_applicator_callback import ForceApplicatorCallback
+from pet_physics.simulation.force_application.force_application_profile_provider import ForceApplicationProfileProvider
 from pet_physics.utils.io_helpers import get_output_dir_for_model_configuration
-from pet_physics.utils.logging_setup import setup_logging
 
 logger = structlog.get_logger(__name__)
-setup_logging("info")
 
 _STABILITY_CHECK = StabilityCheck(
     check_type="one_by_one",
@@ -70,7 +71,7 @@ def get_model_configuration_and_mujoco_model_str(
         packing_plans=collection_packing_plan.packing_plans,
         stability_check=_STABILITY_CHECK,
         body_special_coloring=None,
-        model_bin_as_freejoint_body=False,
+        model_bin_as_freejoint_body=True,
     )
 
     # save all models
@@ -94,28 +95,85 @@ def get_model_configuration_and_mujoco_model_str(
     return model_configuration, model_str
 
 
+def get_force_application_profile(
+    model_configuration: ModelConfiguration, initial_time_offset: float = 0.0
+) -> ForceApplicationProfile:
+    """
+    Returns a force application profile that is suitable for the given model configuration. Suitable means in this case
+    that it is validated with respect to the model configuration, i.e., the force targets exist in the model and these
+    bodies are modelled as freejoint bodies.
+
+    Args:
+        model_configuration: The model configuration of the simulation.
+        initial_time_offset: Some time offset that is added to all application time.
+
+    Returns:
+        The force application profile for the simulation.
+    """
+    if model_configuration.total_mass_of_carrier_and_boxes is None:
+        raise ValueError("Check the mass of the carrier and boxes in the model configuration.")
+
+    force_application_profile_provider = ForceApplicationProfileProvider()
+
+    force_application_profile = ForceApplicationProfile()
+
+    for application_time_offset, magnitude_factor in zip(
+        [2.0, 4.0, 7.0, 9.5, 12.0, 14.5, 17.0],
+        [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0],
+    ):
+        # compute magnitude based on total mass
+        magnitude = model_configuration.total_mass_of_carrier_and_boxes * GRAVITY * magnitude_factor
+
+        # get radial profile
+        radial_profile = force_application_profile_provider.get_radial_profile(
+            magnitude=magnitude,
+            application_time_offset=initial_time_offset + application_time_offset,
+            target=model_configuration.carrier.name,
+        )
+
+        force_application_profile += radial_profile
+
+    # set force targets
+    sorted_target_names = [model_configuration.carrier.name] * force_application_profile.number_forces
+    force_application_profile.set_force_targets(
+        sorted_target_names=sorted_target_names, target_validation=model_configuration
+    )
+
+    return force_application_profile
+
+
 if __name__ == "__main__":
     from pet_physics.simulation import load_mujoco_model_from_string
     from pet_physics.simulation.callbacks.viewer_callback import ViewerCallback
     from pet_physics.simulation.pet_physics_core import PETPhysicsCore
+    from pet_physics.simulation.physical_quantities.collection_body_quantities import CollectionBodyQuantities
+    from pet_physics.utils.logging_setup import setup_logging
 
-    packing_plan_path = Path(__file__).parents[1] / "examples" / "packing_plan_5-bed-bpp.json"
+    setup_logging("info")
+
+    packing_plan_path = Path(__file__).parents[1] / "examples" / "packing_plan_a.json"
 
     model_configuration, mj_model_str = get_model_configuration_and_mujoco_model_str(
         packing_plan_path=packing_plan_path,
         packing_plan_index=0,
     )
-
-    body_teleports = model_configuration.teleports
-    teleport_every = 3
-    total_simulation_time = (1 + len(model_configuration.boxes)) * teleport_every + 50
-
-    # visualize model
     mj_model = load_mujoco_model_from_string(mj_model_str)
-    teleport_every = 3
-    total_simulation_time = (1 + len(model_configuration.boxes)) * teleport_every + 20
 
-    callbacks = [ViewerCallback()]
+    teleport_every = 0.5
+    time_until_all_boxes_are_placed = teleport_every * len(model_configuration.teleports)
+    total_simulation_time = time_until_all_boxes_are_placed * 2.5
+
+    # define force application profile
+    force_application_profile = get_force_application_profile(
+        model_configuration,
+        initial_time_offset=time_until_all_boxes_are_placed + 2.0,
+    )
+
+    collection_body_quantities = CollectionBodyQuantities()
+    callbacks = [
+        ViewerCallback(),
+        ForceApplicatorCallback(force_application_profile),
+    ]
 
     pet_physics_core = PETPhysicsCore(
         model=mj_model,
@@ -125,5 +183,5 @@ if __name__ == "__main__":
         teleport_interval=teleport_every,
         callbacks=callbacks,
     )
-    pet_physics_core.init_for_run(1 / 20)
+    pet_physics_core.init_for_run(1 / 30)
     pet_physics_core.run()
