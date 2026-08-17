@@ -1,0 +1,724 @@
+{
+    "packing_plan_a": [
+        {
+            "item": {
+                "article": "Destiliertes Wasser 3x5l",
+                "id": "22.0",
+                "product_group": "Destiliertes Wasser 3x5l",
+                "length/mm": 424,
+                "width/mm": 190,
+                "height/mm": 345,
+                "weight/kg": 15.5,
+                "sequence": 1
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "ICA Rag fras",
+                "id": "154.0",
+                "product_group": "ICA Rag fras",
+                "length/mm": 584,
+                "width/mm": 205,
+                "height/mm": 270,
+                "weight/kg": 3.56,
+                "sequence": 2
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                0,
+                190,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Schoko Hafer Muesli",
+                "id": "135.0",
+                "product_group": "Schoko Hafer Muesli",
+                "length/mm": 385,
+                "width/mm": 185,
+                "height/mm": 300,
+                "weight/kg": 7.1,
+                "sequence": 3
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                0,
+                0,
+                345
+            ]
+        },
+        {
+            "item": {
+                "article": "Schoko Hafer Muesli",
+                "id": "135.0",
+                "product_group": "Schoko Hafer Muesli",
+                "length/mm": 385,
+                "width/mm": 185,
+                "height/mm": 300,
+                "weight/kg": 7.1,
+                "sequence": 4
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                0,
+                190,
+                270
+            ]
+        },
+        {
+            "item": {
+                "article": "Destiliertes Wasser 3x5l",
+                "id": "22.0",
+                "product_group": "Destiliertes Wasser 3x5l",
+                "length/mm": 424,
+                "width/mm": 190,
+                "height/mm": 345,
+                "weight/kg": 15.5,
+                "sequence": 5
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                205,
+                190,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Weisser Riese Max 5",
+                "id": "148.0",
+                "product_group": "Weisser Riese Max 5",
+                "length/mm": 401,
+                "width/mm": 303,
+                "height/mm": 203,
+                "weight/kg": 4.6,
+                "sequence": 6
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                424,
+                0,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Weisser Riese Max 5",
+                "id": "148.0",
+                "product_group": "Weisser Riese Max 5",
+                "length/mm": 401,
+                "width/mm": 303,
+                "height/mm": 203,
+                "weight/kg": 4.6,
+                "sequence": 7
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                395,
+                303,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Puder Rueben Zucker",
+                "id": "133.0",
+                "product_group": "Puder Rueben Zucker",
+                "length/mm": 403,
+                "width/mm": 163,
+                "height/mm": 135,
+                "weight/kg": 4.4,
+                "sequence": 8
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                0,
+                185,
+                570
+            ]
+        },
+        {
+            "item": {
+                "article": "Schoko Hafer Muesli",
+                "id": "135.0",
+                "product_group": "Schoko Hafer Muesli",
+                "length/mm": 385,
+                "width/mm": 185,
+                "height/mm": 300,
+                "weight/kg": 7.1,
+                "sequence": 9
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                185,
+                185,
+                345
+            ]
+        },
+        {
+            "item": {
+                "article": "CO 013",
+                "id": "127.0",
+                "product_group": "CO 013",
+                "length/mm": 377,
+                "width/mm": 284,
+                "height/mm": 230,
+                "weight/kg": 12.313,
+                "sequence": 10
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                424,
+                0,
+                203
+            ]
+        },
+        {
+            "item": {
+                "article": "CO 013",
+                "id": "127.0",
+                "product_group": "CO 013",
+                "length/mm": 377,
+                "width/mm": 284,
+                "height/mm": 230,
+                "weight/kg": 12.313,
+                "sequence": 11
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                395,
+                284,
+                203
+            ]
+        },
+        {
+            "item": {
+                "article": "Active O2 Bio Apfel 16er",
+                "id": "155.0",
+                "product_group": "Active O2 Bio Apfel 16er",
+                "length/mm": 296,
+                "width/mm": 294,
+                "height/mm": 266,
+                "weight/kg": 12.992,
+                "sequence": 12
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                825,
+                0,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "CO 013",
+                "id": "127.0",
+                "product_group": "CO 013",
+                "length/mm": 377,
+                "width/mm": 284,
+                "height/mm": 230,
+                "weight/kg": 12.313,
+                "sequence": 13
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                796,
+                303,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Destiliertes Wasser 3x5l",
+                "id": "22.0",
+                "product_group": "Destiliertes Wasser 3x5l",
+                "length/mm": 424,
+                "width/mm": 190,
+                "height/mm": 345,
+                "weight/kg": 15.5,
+                "sequence": 14
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                205,
+                614,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Mineralwasser 18x0.5 Edeka still",
+                "id": "157.0",
+                "product_group": "Mineralwasser 18x0.5 Edeka still",
+                "length/mm": 400,
+                "width/mm": 200,
+                "height/mm": 220,
+                "weight/kg": 9.9,
+                "sequence": 15
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                629,
+                606,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "CO 001",
+                "id": "132.0",
+                "product_group": "CO 001",
+                "length/mm": 190,
+                "width/mm": 143,
+                "height/mm": 204,
+                "weight/kg": 2.771,
+                "sequence": 16
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                1029,
+                587,
+                0
+            ]
+        },
+        {
+            "item": {
+                "article": "Barilla Tortiglioni",
+                "id": "13.0",
+                "product_group": "Barilla Tortiglioni",
+                "length/mm": 403,
+                "width/mm": 295,
+                "height/mm": 203,
+                "weight/kg": 6.5,
+                "sequence": 17
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                385,
+                0,
+                433
+            ]
+        },
+        {
+            "item": {
+                "article": "Active O2 Bio Apfel 16er",
+                "id": "155.0",
+                "product_group": "Active O2 Bio Apfel 16er",
+                "length/mm": 296,
+                "width/mm": 294,
+                "height/mm": 266,
+                "weight/kg": 12.992,
+                "sequence": 18
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                801,
+                0,
+                266
+            ]
+        },
+        {
+            "item": {
+                "article": "Nutella Thekendisplay",
+                "id": "136.0",
+                "product_group": "Nutella Thekendisplay",
+                "length/mm": 394,
+                "width/mm": 197,
+                "height/mm": 183,
+                "weight/kg": 3.9,
+                "sequence": 19
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                163,
+                0,
+                645
+            ]
+        },
+        {
+            "item": {
+                "article": "Zucker-Sticks",
+                "id": "132.0",
+                "product_group": "Zucker-Sticks",
+                "length/mm": 396,
+                "width/mm": 257,
+                "height/mm": 137,
+                "weight/kg": 4.5,
+                "sequence": 20
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                385,
+                0,
+                636
+            ]
+        },
+        {
+            "item": {
+                "article": "Mineralwasser 18x0.5 Edeka still",
+                "id": "157.0",
+                "product_group": "Mineralwasser 18x0.5 Edeka still",
+                "length/mm": 400,
+                "width/mm": 200,
+                "height/mm": 220,
+                "weight/kg": 9.9,
+                "sequence": 21
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                370,
+                295,
+                433
+            ]
+        },
+        {
+            "item": {
+                "article": "Vio Bio Limo Orange 18x0.5l",
+                "id": "94.0",
+                "product_group": "Vio Bio Limo Orange 18x0.5l",
+                "length/mm": 396,
+                "width/mm": 195,
+                "height/mm": 226,
+                "weight/kg": 9.692,
+                "sequence": 22
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                163,
+                0,
+                828
+            ]
+        },
+        {
+            "item": {
+                "article": "Barilla Tortiglioni",
+                "id": "13.0",
+                "product_group": "Barilla Tortiglioni",
+                "length/mm": 403,
+                "width/mm": 295,
+                "height/mm": 203,
+                "weight/kg": 6.5,
+                "sequence": 23
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                360,
+                0,
+                773
+            ]
+        },
+        {
+            "item": {
+                "article": "Casa Rinaldi Aceto di Vino",
+                "id": "44.0",
+                "product_group": "Casa Rinaldi Aceto di Vino",
+                "length/mm": 342,
+                "width/mm": 264,
+                "height/mm": 255,
+                "weight/kg": 12.34,
+                "sequence": 24
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                788,
+                0,
+                532
+            ]
+        },
+        {
+            "item": {
+                "article": "Kelloggs Corn Flakes",
+                "id": "49.0",
+                "product_group": "Kelloggs Corn Flakes",
+                "length/mm": 390,
+                "width/mm": 255,
+                "height/mm": 355,
+                "weight/kg": 3.78,
+                "sequence": 25
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                772,
+                296,
+                230
+            ]
+        },
+        {
+            "item": {
+                "article": "Puder Rueben Zucker",
+                "id": "133.0",
+                "product_group": "Puder Rueben Zucker",
+                "length/mm": 403,
+                "width/mm": 163,
+                "height/mm": 135,
+                "weight/kg": 4.4,
+                "sequence": 26
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                629,
+                587,
+                220
+            ]
+        },
+        {
+            "item": {
+                "article": "Volvic 4x6x500ml",
+                "id": "115.0",
+                "product_group": "Volvic 4x6x500ml",
+                "length/mm": 387,
+                "width/mm": 262,
+                "height/mm": 210,
+                "weight/kg": 12.78,
+                "sequence": 27
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                185,
+                570,
+                345
+            ]
+        },
+        {
+            "item": {
+                "article": "Puder Rueben Zucker",
+                "id": "133.0",
+                "product_group": "Puder Rueben Zucker",
+                "length/mm": 403,
+                "width/mm": 163,
+                "height/mm": 135,
+                "weight/kg": 4.4,
+                "sequence": 28
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                360,
+                295,
+                653
+            ]
+        },
+        {
+            "item": {
+                "article": "Dasch Color Frische",
+                "id": "147.0",
+                "product_group": "Dasch Color Frische",
+                "length/mm": 405,
+                "width/mm": 262,
+                "height/mm": 202,
+                "weight/kg": 10.9,
+                "sequence": 29
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                185,
+                570,
+                555
+            ]
+        },
+        {
+            "item": {
+                "article": "Vio Bio Limo Orange 18x0.5l",
+                "id": "94.0",
+                "product_group": "Vio Bio Limo Orange 18x0.5l",
+                "length/mm": 396,
+                "width/mm": 195,
+                "height/mm": 226,
+                "weight/kg": 9.692,
+                "sequence": 30
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                629,
+                587,
+                355
+            ]
+        },
+        {
+            "item": {
+                "article": "Volvic 4x6x500ml",
+                "id": "115.0",
+                "product_group": "Volvic 4x6x500ml",
+                "length/mm": 387,
+                "width/mm": 262,
+                "height/mm": 210,
+                "weight/kg": 12.78,
+                "sequence": 31
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                772,
+                296,
+                585
+            ]
+        },
+        {
+            "item": {
+                "article": "Nutella Thekendisplay",
+                "id": "136.0",
+                "product_group": "Nutella Thekendisplay",
+                "length/mm": 394,
+                "width/mm": 197,
+                "height/mm": 183,
+                "weight/kg": 3.9,
+                "sequence": 32
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                360,
+                295,
+                788
+            ]
+        },
+        {
+            "item": {
+                "article": "Stenqvist",
+                "id": "152.0",
+                "product_group": "Stenqvist",
+                "length/mm": 400,
+                "width/mm": 241,
+                "height/mm": 166,
+                "weight/kg": 4.946,
+                "sequence": 33
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                185,
+                570,
+                757
+            ]
+        },
+        {
+            "item": {
+                "article": "Zucker-Sticks",
+                "id": "132.0",
+                "product_group": "Zucker-Sticks",
+                "length/mm": 396,
+                "width/mm": 257,
+                "height/mm": 137,
+                "weight/kg": 4.5,
+                "sequence": 34
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                360,
+                0,
+                976
+            ]
+        },
+        {
+            "item": {
+                "article": "Dasch Color Frische",
+                "id": "147.0",
+                "product_group": "Dasch Color Frische",
+                "length/mm": 405,
+                "width/mm": 262,
+                "height/mm": 202,
+                "weight/kg": 10.9,
+                "sequence": 35
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                827,
+                42,
+                795
+            ]
+        },
+        {
+            "item": {
+                "article": "Spezi Dose 24x 0.33l",
+                "id": "18.0",
+                "product_group": "Spezi Dose 24x 0.33l",
+                "length/mm": 414,
+                "width/mm": 274,
+                "height/mm": 119,
+                "weight/kg": 8.58,
+                "sequence": 36
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                360,
+                0,
+                1113
+            ]
+        },
+        {
+            "item": {
+                "article": "Mineralwasser 18x0.5 Edeka still",
+                "id": "157.0",
+                "product_group": "Mineralwasser 18x0.5 Edeka still",
+                "length/mm": 400,
+                "width/mm": 200,
+                "height/mm": 220,
+                "weight/kg": 9.9,
+                "sequence": 37
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                827,
+                42,
+                997
+            ]
+        },
+        {
+            "item": {
+                "article": "CO 010",
+                "id": "125.0",
+                "product_group": "CO 010",
+                "length/mm": 377,
+                "width/mm": 284,
+                "height/mm": 154,
+                "weight/kg": 8.244,
+                "sequence": 38
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                371,
+                16,
+                1232
+            ]
+        },
+        {
+            "item": {
+                "article": "Nutella Thekendisplay",
+                "id": "136.0",
+                "product_group": "Nutella Thekendisplay",
+                "length/mm": 394,
+                "width/mm": 197,
+                "height/mm": 183,
+                "weight/kg": 3.9,
+                "sequence": 39
+            },
+            "orientation": 1,
+            "flb_coordinates": [
+                848,
+                63,
+                1217
+            ]
+        },
+        {
+            "item": {
+                "article": "ICA Roulade Haron",
+                "id": "158.0",
+                "product_group": "ICA Roulade Haron",
+                "length/mm": 590,
+                "width/mm": 395,
+                "height/mm": 80,
+                "weight/kg": 4.0,
+                "sequence": 40
+            },
+            "orientation": 0,
+            "flb_coordinates": [
+                371,
+                16,
+                1400
+            ]
+        }
+    ]
+}
