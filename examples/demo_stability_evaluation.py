@@ -132,6 +132,7 @@ def get_collection_model_configuration(
 
 
 if __name__ == "__main__":
+    from pet_physics.evaluation.forces.evaluator_max_contact_force_top import EvaluatorMaxContactForceTop
     from pet_physics.simulation.callbacks.recorder_callback import RecorderCallback
     from pet_physics.simulation.callbacks.viewer_callback import ViewerCallback
     from pet_physics.simulation.physical_quantities.collection_body_quantities import (
@@ -170,7 +171,7 @@ if __name__ == "__main__":
         ViewerCallback(),
         RecorderCallback(ForcePenetrationRecorder, collection_body_quantities),
     )
-    evaluator_registrations = ()
+    evaluator_registrations = (EvaluatorMaxContactForceTop(),)
     simulation_runner = SimulationRunner(simulation_procedure, evaluation_config)
     results = simulation_runner.start(model_configurations, core_callbacks, evaluator_registrations)
 
