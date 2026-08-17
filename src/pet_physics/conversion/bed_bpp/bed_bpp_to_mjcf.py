@@ -64,7 +64,7 @@ def packing_plan_to_carrier_body(packing_plan: PackingPlan, as_freejoint_body: b
     Returns:
         The carrier body representing the packing plan's surface.
     """
-    body_name, geom_name = get_body_and_geom_name("", packing_plan.id)
+    body_name, geom_name = get_body_and_geom_name("", f"{packing_plan.id}-carrier")
 
     footprint_size_mm = (*_compute_footprint_size_mm(packing_plan), 0.0)
     converted_size, _ = MJCFUtils.convert_to_mjcf_coordinates(
