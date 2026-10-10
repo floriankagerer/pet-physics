@@ -18,10 +18,12 @@ I am happy to announce that our paper "PET-Physics: A Packing Evaluation Tool Co
 Whenever you use our tool, please cite our publication:
 
 >
-> F. Enzenhofer, J. Ondřej, and A. Nüchter. PET-Physics: A Packing Evaluation Tool Considering Physics. TBA
+> F. Enzenhofer, J. Ondřej and A. Nüchter, "PET-Physics: A Packing Evaluation Tool Considering Physics," 
+> 2026 IEEE 22nd International Conference on Automation Science and Engineering (CASE), Shenyang, China, 2026, 
+> pp. 2164-2169, doi: 10.1109/CASE69030.2026.11704414
 > <br>
 > <a href=".bib" target="_blank">[BibTeX]</a>
-<a href="https://doi.org" target="_blank">[DOI]</a>
+<a href="https://doi.org/10.1109/CASE69030.2026.11704414" target="_blank">[DOI]</a>
 >
 
 <!-- -------------------------------------------------------------- -->
