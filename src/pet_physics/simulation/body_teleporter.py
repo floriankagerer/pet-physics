@@ -17,6 +17,15 @@ from pet_physics.simulation.mujoco_lookup_helpers import (
 
 logger = structlog.get_logger(__name__)
 
+SIDEWAYS_OVERLAP_TOLERANCE_M = 1e-5
+"""A teleported body may penetrate its neighbours sideways by up to this depth, in meters, without being moved."""
+
+SIDEWAYS_OVERLAP_MAX_ITERATIONS = 10
+"""The maximal number of times a teleported body is moved sideways to get it out of its neighbours."""
+
+SIDEWAYS_CONTACT_MAX_ABS_NORMAL_Z = 0.5
+"""A contact counts as sideways if the absolute z-component of its unit normal is at most this value."""
+
 
 class BodyTeleporter:
     """This class is responsible for applying the teleports to the bodies in a MuJoCo simulation. With teleport we
@@ -49,6 +58,9 @@ class BodyTeleporter:
             model: The MuJoCo model.
             stability_check: The stability check object.
         """
+
+        self._model = model
+        """The MuJoCo model the bodies belong to."""
 
         body_names = get_body_names_in_model(model, ignore_private_bodies=True, ignore_additional_bodies=["world"])
         """All interesting body names that are defined in the model."""
@@ -232,6 +244,69 @@ class BodyTeleporter:
             total_delta = fall_delta + packing_delta
             self._add_delta_to_body_position(data, compiled_body_name, total_delta)
 
+    def _get_sideways_separation(self, data: mujoco.MjData, body_ids: set[int]) -> np.ndarray:
+        """Returns the horizontal move that takes the given bodies out of the bodies they penetrate sideways.
+
+        The contacts in `data` have to be up to date. Contacts with a mostly vertical normal are ignored, so a body
+        that rests on or is dropped onto another one is not moved.
+
+        Args:
+            data: The data of the MuJoCo simulation.
+            body_ids: The ids of the bodies that are moved together.
+
+        Returns:
+            The `(x, y, 0)` move in meters. If the bodies are squeezed between neighbours on opposite sides, the move
+            evens out the penetration on both sides.
+        """
+        push_positive = np.zeros(2)
+        push_negative = np.zeros(2)
+
+        for contact in data.contact:
+            if contact.dist >= -SIDEWAYS_OVERLAP_TOLERANCE_M or contact.geom1 < 0 or contact.geom2 < 0:
+                continue
+
+            is_first_geom_moved = int(self._model.geom_bodyid[contact.geom1]) in body_ids
+            is_second_geom_moved = int(self._model.geom_bodyid[contact.geom2]) in body_ids
+            if is_first_geom_moved == is_second_geom_moved:
+                continue
+
+            # the contact normal points from the first to the second geometry
+            normal = contact.frame[:3]
+            if abs(normal[2]) > SIDEWAYS_CONTACT_MAX_ABS_NORMAL_Z:
+                continue
+
+            direction_away_from_neighbour = -normal[:2] if is_first_geom_moved else normal[:2]
+            push = direction_away_from_neighbour * -contact.dist
+            push_positive = np.maximum(push_positive, push)
+            push_negative = np.minimum(push_negative, push)
+
+        return np.append(push_positive + push_negative, 0.0)
+
+    def _resolve_sideways_overlap(self, data: mujoco.MjData, body_name: str) -> None:
+        """Moves a freshly teleported body sideways until it no longer penetrates its neighbours.
+
+        The bodies that are already placed drift a little during the simulation, so the target position of a
+        teleport may lie partly inside a neighbour. Without this correction, the solver pushes the bodies apart
+        within a single step. The height of the body is not changed.
+
+        Args:
+            data: The data of the MuJoCo simulation.
+            body_name: The name of the teleported body as it is defined in the model file.
+        """
+        compiled_body_names = self._body_names_containing(body_name)
+        body_ids = {self._body_id_of[compiled_body_name] for compiled_body_name in compiled_body_names}
+
+        for _ in range(SIDEWAYS_OVERLAP_MAX_ITERATIONS):
+            # update the body poses and the contacts for the current positions
+            mujoco.mj_fwdPosition(self._model, data)
+
+            separation = self._get_sideways_separation(data, body_ids)
+            if np.linalg.norm(separation) <= SIDEWAYS_OVERLAP_TOLERANCE_M:
+                break
+
+            for compiled_body_name in compiled_body_names:
+                self._add_delta_to_body_position(data, compiled_body_name, separation)
+
     def pop_teleport(self) -> Teleport | None:
         """Pops the first teleport from the list.
 
@@ -258,6 +333,8 @@ class BodyTeleporter:
                 teleport_list = [teleport]
             for teleport_item in teleport_list:
                 self.update_body_position(data, teleport_item.name, teleport_item.delta_position)
+            for teleport_item in teleport_list:
+                self._resolve_sideways_overlap(data, teleport_item.name)
 
             self._time_last_teleport = simulation_time
             if self.are_all_body_teleports_applied:

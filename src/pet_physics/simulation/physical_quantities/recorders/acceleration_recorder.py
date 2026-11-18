@@ -3,7 +3,7 @@
 import mujoco
 import numpy as np
 
-from pet_physics.simulation.mujoco_lookup_helpers import get_joint_start_address_of_body
+from pet_physics.simulation.mujoco_lookup_helpers import get_dof_start_address_of_body
 from pet_physics.simulation.physical_quantities.history.acceleration_history import AccelerationHistory
 from pet_physics.simulation.physical_quantities.quantity_names import QuantityName
 from pet_physics.simulation.physical_quantities.recorders.base_recorder import BaseRecorder
@@ -23,10 +23,10 @@ class AccelerationRecorder(BaseRecorder):
         """
         super().__init__(mj_model=mj_model, bodies=bodies, n_steps=n_steps)
 
-        self._joint_start_address = {
-            body_name: get_joint_start_address_of_body(self._mj_model, body_name) for body_name in bodies
+        self._dof_start_address = {
+            body_name: get_dof_start_address_of_body(self._mj_model, body_name) for body_name in bodies
         }
-        """A dictionary that contains the body name as key and its corresponding joint start address in the data."""
+        """A dictionary that contains the body name as key and its corresponding start address in `data.qacc`."""
 
         self._acceleration_history = AccelerationHistory(mj_model=self._mj_model, n_steps=n_steps)
         """Stores the history of accelerations of bodies during the simulation."""
@@ -68,8 +68,8 @@ class AccelerationRecorder(BaseRecorder):
         Returns:
             The values of the body's acceleration.
         """
-        joint_start_adress = self._joint_start_address.get(body_name)
-        body_acceleration = acceleration_data[joint_start_adress : joint_start_adress + 6]
+        dof_start_address = self._dof_start_address.get(body_name)
+        body_acceleration = acceleration_data[dof_start_address : dof_start_address + 6]
 
         return body_acceleration
 

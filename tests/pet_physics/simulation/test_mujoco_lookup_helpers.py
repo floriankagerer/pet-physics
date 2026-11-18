@@ -11,6 +11,7 @@ from pet_physics.simulation.mujoco_lookup_helpers import (
     get_body_id,
     get_body_names_in_model,
     get_contacts_of_geometry,
+    get_dof_start_address_of_body,
     get_geom_names_of_body,
     get_joint_start_address_of_body,
     get_position_of_body,
@@ -131,6 +132,13 @@ def test_get_joint_start_address_of_body(model: mujoco.MjModel) -> None:
     expected_address = model.jnt_qposadr[model.body_jntadr[box_a_body_id]]
 
     assert get_joint_start_address_of_body(model, "box_a") == expected_address
+
+
+def test_get_dof_start_address_of_body(model: mujoco.MjModel) -> None:
+    """Dof start address should count six degrees of freedom for every preceding free joint."""
+    assert get_dof_start_address_of_body(model, "_private_body") == 0
+    assert get_dof_start_address_of_body(model, "box_a") == 6
+    assert get_dof_start_address_of_body(model, "box_b") == 12
 
 
 def test_get_position_of_body(model: mujoco.MjModel) -> None:
