@@ -148,6 +148,29 @@ def get_joint_start_address_of_body(model: mujoco.MjModel, body_name: str) -> in
     return model.jnt_qposadr[model.body_jntadr[body_id]]
 
 
+def get_dof_start_address_of_body(model: mujoco.MjModel, body_name: str) -> int:
+    """Returns the start address in `data.qvel` and `data.qacc` for the given body.
+
+    This address differs from the start address in `data.qpos`, cf. `get_joint_start_address_of_body`, since, e.g.,
+    a free joint has seven position values (position and quaternion) but only six degrees of freedom.
+
+    Reference: https://mujoco.readthedocs.io/en/stable/APIreference/APItypes.html#mjmodel
+    ```
+    # body_jntadr: represents the start address of joints; -1 indicates no joints
+    # jnt_dofadr: start address in `qvel` for joint's data
+    ```
+
+    Args:
+        model: The model of the simulation.
+        body_name: The name of the body as defined in the model.
+
+    Returns:
+        The start address in `data.qvel` and `data.qacc` for the given body.
+    """
+    body_id = get_body_id(model, body_name)
+    return model.jnt_dofadr[model.body_jntadr[body_id]]
+
+
 def get_position_of_body(model: mujoco.MjModel, body_name: str) -> np.ndarray:
     """Returns the position of a body as it is specified in the model.
 
